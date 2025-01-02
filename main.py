@@ -1,4 +1,5 @@
 import requests
+import time
 
 def load_display():
     try:
@@ -32,23 +33,42 @@ def main():
     print(load_display())
     wallet_addresses = []
 
-    print("Enter wallet addresses one by one. Type 'done' when you are finished:")
     while True:
-        wallet_address = input("Enter wallet address: ").strip()
-        if wallet_address.lower() == 'done':
+        address = input("Enter your wallet address, type 'done' if finished: ").strip()
+        if address.lower() == 'done':
             break
-        wallet_addresses.append(wallet_address)
-    
-    # Save addresses to list.txt
-    with open("list.txt", "w") as file:
-        for address in wallet_addresses:
-            file.write(address + "\n")
-    print("✅ Wallet addresses saved to list.txt.")
+        wallet_addresses.append(address)
 
-    # Check balance for each address
-    print("\n🔍 Checking balances:")
-    for address in wallet_addresses:
-        get_balance_from_explorer(address)
+    # Save wallet addresses to a file
+    with open('list.txt', 'w', encoding='utf-8') as file:
+        for addr in wallet_addresses:
+            file.write(addr + '\n')
+    
+    while True:
+        print("\nChecking balances for saved wallet addresses...\n")
+        for addr in wallet_addresses:
+            get_balance_from_explorer(addr)
+        print("⏳ Waiting for 20 seconds before the next check...\n")
+        time.sleep(20)  # Wait for 20 seconds before repeatingprint(load_display())
+    wallet_addresses = []
+
+    while True:
+        address = input("Enter your wallet address, type 'done' if finished: ").strip()
+        if address.lower() == 'done':
+            break
+        wallet_addresses.append(address)
+
+    # Save wallet addresses to a file
+    with open('list.txt', 'w', encoding='utf-8') as file:
+        for addr in wallet_addresses:
+            file.write(addr + '\n')
+    
+    while True:
+        print("\nChecking balances for saved wallet addresses...\n")
+        for addr in wallet_addresses:
+            get_balance_from_explorer(addr)
+        print("⏳ Waiting for 20 seconds before the next check...\n")
+        time.sleep(20)  # Wait for 20 seconds before repeating
 
 if __name__ == "__main__":
     main()
