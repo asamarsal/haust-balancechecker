@@ -11,7 +11,9 @@
 5. ``python3 main.py``
 6. Input your address wallet, if u finish input all of your wallet, then type ``done``
 7. You can check all of your wallet balance
+   
 ![haust2](https://github.com/user-attachments/assets/e917e346-ec2a-4c7e-9145-52f628e620e0)
+
 9. If u almost running out of balance, get some faucet on https://faucet-test.haust.network/
 10. Ctrl + A + D
 11. Enjoy
