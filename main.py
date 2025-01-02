@@ -1,5 +1,12 @@
 import requests
 
+def load_display():
+    try:
+        with open('exluminate.txt', 'r', encoding='utf-8') as file:
+            return file.read()
+    except FileNotFoundError:
+        return "Welcome to Haust Multi Wallet Balance Checker!"
+
 def get_balance_from_explorer(address):
     try:
         url = f"https://explorer-test.haust.network/api/v2/addresses/{address}/coin-balance-history-by-day"
@@ -22,6 +29,7 @@ def get_balance_from_explorer(address):
         return None
 
 def main():
+    print(load_display())
     wallet_addresses = []
 
     print("Enter wallet addresses one by one. Type 'done' when you are finished:")
