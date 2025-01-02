@@ -9,7 +9,7 @@
 5. ``python3 main.py``
 6. Input your address wallet, if u finish input all of your wallet, then type ``done``
 7. You can check all of your wallet balance
-8. If u almost running out of balance, get some faucet on https://www.faucet-test.haust.network
+8. If u almost running out of balance, get some faucet on https://faucet-test.haust.network/
 9. Ctrl + A + D
 10. Enjoy
 
