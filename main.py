@@ -31,44 +31,54 @@ def get_balance_from_explorer(address):
 
 def main():
     print(load_display())
+    print("\nEnter your wallet address, type 'done' if finished:")
+
     wallet_addresses = []
+    count = 1
 
     while True:
-        address = input("Enter your wallet address, type 'done' if finished: ").strip()
+        address = input(f"Wallet {count}: ").strip()
         if address.lower() == 'done':
             break
         wallet_addresses.append(address)
+        count += 1
 
     # Save wallet addresses to a file
     with open('list.txt', 'w', encoding='utf-8') as file:
         for addr in wallet_addresses:
             file.write(addr + '\n')
-    
+
+    # Repeat balance checking every 20 seconds
     while True:
         print("\nChecking balances for saved wallet addresses...\n")
         for addr in wallet_addresses:
             get_balance_from_explorer(addr)
         print("⏳ Waiting for 20 seconds before the next check...\n")
-        time.sleep(20)  # Wait for 20 seconds before repeatingprint(load_display())
+        time.sleep(20)print(load_display())
+    print("\nEnter your wallet address, type 'done' if finished:")
+
     wallet_addresses = []
+    count = 1
 
     while True:
-        address = input("Enter your wallet address, type 'done' if finished: ").strip()
+        address = input(f"Wallet {count}: ").strip()
         if address.lower() == 'done':
             break
         wallet_addresses.append(address)
+        count += 1
 
     # Save wallet addresses to a file
     with open('list.txt', 'w', encoding='utf-8') as file:
         for addr in wallet_addresses:
             file.write(addr + '\n')
-    
+
+    # Repeat balance checking every 20 seconds
     while True:
         print("\nChecking balances for saved wallet addresses...\n")
         for addr in wallet_addresses:
             get_balance_from_explorer(addr)
         print("⏳ Waiting for 20 seconds before the next check...\n")
-        time.sleep(20)  # Wait for 20 seconds before repeating
-
+        time.sleep(20)
+        
 if __name__ == "__main__":
     main()
